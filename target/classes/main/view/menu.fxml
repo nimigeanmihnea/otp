@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<SplitPane fx:id="mainPain" dividerPositions="0.08032128514056225" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.MenuController">
+<items>
+<AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="46.0" prefWidth="798.0" style="-fx-background-color: #3c3c3c;" SplitPane.resizableWithParent="false">
+         <children>
+            <Button fx:id="aboutButton" layoutX="8.0" layoutY="6.0" mnemonicParsing="false" onAction="#aboutActionListener" text="About">
+               <stylesheets>
+                  <URL value="@../" />
+                  <URL value="@../../resources/static/button.css" />
+               </stylesheets></Button>
+            <Button fx:id="sendMessage" layoutX="223.0" layoutY="6.0" mnemonicParsing="false" onAction="#sendMessageActionListener" stylesheets="@../../resources/static/button.css" text="Send Message" />
+            <Button fx:id="decryptButton" layoutX="425.0" layoutY="6.0" mnemonicParsing="false" onAction="#decryptActionListener" stylesheets="@../../resources/static/button.css" text="Decrypt" />
+            <Button fx:id="defragmentButton" layoutX="507.0" layoutY="6.0" mnemonicParsing="false" onAction="#defragmentActionListener" stylesheets="@../../resources/static/button.css" text="Defragment key">
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button fx:id="encryptButton" layoutX="344.0" layoutY="6.0" mnemonicParsing="false" onAction="#encryptActionListener" stylesheets="@../../resources/static/button.css" text="Encrypt" />
+            <Button fx:id="sysInfo" layoutX="80.0" layoutY="6.0" mnemonicParsing="false" onAction="#sysInfoActionListener" stylesheets="@../../resources/static/button.css" text="System information" />
+         </children></AnchorPane>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="798.0" style="-fx-background-color: #3c3c3c;">
+         <children>
+            <Pane fx:id="aboutPane">
+               <children>
+                  <TextFlow fx:id="aboutText" disable="true" prefHeight="444.0" prefWidth="798.0" textAlignment="CENTER" />
+               </children>
+            </Pane>
+            <Pane fx:id="sendMessagePane" prefHeight="444.0" prefWidth="798.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="browseFileButton" layoutX="240.0" layoutY="376.0" mnemonicParsing="false" onAction="#browseActionListener" prefHeight="35.0" prefWidth="121.0" stylesheets="@../../resources/static/button.css" text="Browse file" />
+                  <TextField fx:id="messageSender" layoutX="240.0" layoutY="35.0" onMouseClicked="#fromActionListener" prefHeight="25.0" prefWidth="235.0" />
+                  <Label layoutX="93.0" layoutY="27.0" prefHeight="35.0" prefWidth="92.0" text="Your email: " textFill="#ebebeb" />
+                  <Label layoutX="93.0" layoutY="97.0" prefHeight="5.0" prefWidth="121.0" text="Reciever email: " textFill="#ebebeb" />
+                  <TextField fx:id="messageText" layoutX="240.0" layoutY="243.0" prefHeight="121.0" prefWidth="391.0" />
+                  <Label layoutX="93.0" layoutY="167.0" prefHeight="15.0" prefWidth="134.0" text="Subject:" textFill="#ebebeb" />
+                  <Label layoutX="93.0" layoutY="237.0" prefHeight="25.0" prefWidth="146.0" text="Text:" textFill="#ebebeb" />
+                  <TextField fx:id="messageReciever" layoutX="240.0" layoutY="98.0" onMouseClicked="#toActionListener" prefHeight="7.0" prefWidth="235.0" />
+                  <TextField fx:id="messageSubject" layoutX="240.0" layoutY="162.0" prefHeight="25.0" prefWidth="235.0" />
+                  <Button fx:id="sendButton" layoutX="376.0" layoutY="375.0" mnemonicParsing="false" onAction="#sendActionListener" prefHeight="35.0" prefWidth="121.0" stylesheets="@../../resources/static/button.css" text="Send" />
+                  <Button fx:id="cancelButton" layoutX="510.0" layoutY="374.0" mnemonicParsing="false" onAction="#cancelActionListener" prefHeight="35.0" prefWidth="121.0" stylesheets="@../../resources/static/button.css" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="infoPane" prefHeight="444.0" prefWidth="798.0" stylesheets="@../../resources/static/pane.css" visible="false">
+               <children>
+                  <Group fx:id="group" layoutX="12.0" layoutY="35.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff25" height="25.0" stroke="BLACK" strokeType="INSIDE" width="775.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="24.8" />
+                     </children>
+                  </Group>
+                  <Label layoutX="14.0" layoutY="14.0" text="Key:" textFill="#ebebeb" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="13.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9917a4" height="25.0" layoutX="189.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a0a0a" height="25.0" layoutX="356.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2eff21" height="25.0" layoutX="542.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+                  <Label layoutX="50.0" layoutY="88.0" text="Key metadata" textFill="WHITE" />
+                  <Label layoutX="231.0" layoutY="88.0" text="Encrypted" textFill="WHITE" />
+                  <Label layoutX="401.0" layoutY="88.0" text="Decrypted" textFill="WHITE" />
+                  <Label layoutX="584.0" layoutY="88.0" text="Free" textFill="WHITE" />
+                  <Label layoutX="17.0" layoutY="155.0" text="System Info:" textFill="WHITE" underline="true" />
+                  <Label layoutX="59.0" layoutY="198.0" text="Key size:" textFill="#ebebeb" />
+                  <Label layoutX="59.0" layoutY="238.0" text="Free space:" textFill="#ebebeb" />
+                  <Label fx:id="sizeLabel" layoutX="220.0" layoutY="198.0" text="Key size:" textFill="#ebebeb" />
+                  <Label fx:id="freeLabel" layoutX="220.0" layoutY="238.0" text="Key size:" textFill="#ebebeb" />
+               </children>
+            </Pane>
+         </children></AnchorPane>
+</items>
+</SplitPane>
